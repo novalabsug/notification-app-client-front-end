@@ -1,0 +1,49 @@
+@import "config";
+// @mixin mediaSm
+@media screen and (max-width: 720px) {
+  .hide-on-small {
+    display: none;
+  }
+  .hide-on-small-medium {
+    display: none;
+  }
+  .hide-on-small-large {
+    display: none;
+  }
+  .flx {
+    flex-direction: column;
+  }
+  .grd-cl-4 {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}
+
+// @mixin mediaMd
+@media screen and (min-width: 720px) and (max-width: 1170px) {
+  .hide-on-medium {
+    display: none;
+  }
+  .hide-on-small-medium {
+    display: none;
+  }
+  .hide-on-medium-large {
+    display: none;
+  }
+  .flx {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+// @mixin mediaXL
+@media screen and (min-width: 1171px) {
+  .hide-on-large {
+    display: none;
+  }
+  .hide-on-medium-large {
+    display: none;
+  }
+  .hide-on-small-large {
+    display: none;
+  }
+}
