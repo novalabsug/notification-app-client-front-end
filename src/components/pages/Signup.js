@@ -6,25 +6,20 @@ import {
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { Google, GitHub } from "@mui/icons-material";
+
 import { createUser } from "../../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Navigate, useNavigate } from "react-router-dom";
+import { googleProvider, githubProvider } from "../../config/authMethod";
+import socialMediaAuth from "../../services/auth";
 
 const Signup = () => {
-  const users = useSelector((state) => state.users);
-  const navigate = useNavigate();
-
-  console.log(users);
-
-  users.forEach((user) => {
-    if (user.user) {
-      navigate("/signin");
-    }
-  });
+  const results = useSelector((state) => state.auth);
 
   const [userData, setUserData] = useState({
     username: "",
+    accountID: "",
     gender: "",
     password: "",
   });
@@ -34,6 +29,18 @@ const Signup = () => {
     e.preventDefault();
 
     dispatch(createUser(userData));
+  };
+
+  const handleChange = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
+
+  const handleGoogleAuth = async () => {
+    const res = await socialMediaAuth(googleProvider);
+  };
+
+  const handleGithubAuth = async () => {
+    const res = await socialMediaAuth(githubProvider);
   };
   return (
     <main id="signup">
@@ -51,24 +58,27 @@ const Signup = () => {
               placeholder="username"
               name="username"
               autoComplete="false"
-              value={userData.username}
-              onChange={(e) =>
-                setUserData({ ...userData, username: e.target.value })
-              }
+              onChange={handleChange}
             />
-            {users.map((user) => (
-              <p className="error username-error">{user.error}</p>
-            ))}
+            <p className="error username-error">{results.authData}</p>
           </div>
           <div className="input">
+            <label htmlFor="accountID">Account ID</label>
+            <FontAwesomeIcon className="icon" icon={faUser} />
+            <input
+              type="text"
+              placeholder="Enter unique Account ID"
+              name="accountID"
+              autoComplete="false"
+              onChange={handleChange}
+            />
+            <p className="error username-error">{results.authData}</p>
+          </div>
+        </div>
+        <div className="form-group">
+          <div className="input">
             <label htmlFor="gender">Gender</label>
-            <select
-              name="gender"
-              value={userData.gender}
-              onChange={(e) =>
-                setUserData({ ...userData, gender: e.target.value })
-              }
-            >
+            <select name="gender" onChange={handleChange}>
               <option disabled>---</option>
               <option value="none">Prefer not say</option>
               <option value="male">Male</option>
@@ -84,11 +94,9 @@ const Signup = () => {
               type="password"
               placeholder="password"
               name="password"
-              value={userData.password}
-              onChange={(e) =>
-                setUserData({ ...userData, password: e.target.value })
-              }
+              onChange={handleChange}
             />
+            <p className="error password-error">{results.authData}</p>
           </div>
         </div>
         <div className="wrapper">
@@ -99,6 +107,17 @@ const Signup = () => {
         <button type="submit" className="btn">
           Sign Up
         </button>
+        <div className="social-auth-wrapper" hidden>
+          <h3 className="center-align f-size-reg">Or signin with</h3>
+          <div className="flx jc-center">
+            <a className="btn google-sign-in" onClick={handleGoogleAuth}>
+              <Google fontSize="small" /> Google
+            </a>
+            <a className="btn github-sign-in" onClick={handleGithubAuth}>
+              <GitHub fontSize="small" /> Github
+            </a>
+          </div>
+        </div>
       </form>
     </main>
   );

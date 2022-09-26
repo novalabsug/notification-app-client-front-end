@@ -3,7 +3,8 @@ $base-color-2: #fff;
 // $theme-color: #31353b;
 // $theme-color-2: #eeeeee;
 $primary-color: #1a7cb4;
-$secondary-color: #142844;
+// $secondary-color: #142844;
+$secondary-color: #cecece;
 
 @font-face {
   font-family: lato;
@@ -31,7 +32,7 @@ $secondary-color: #142844;
   box-sizing: border-box;
   font-size: 1rem;
   font-family: karla;
-  color: $base-color-2;
+  color: $base-color;
   @include easeOut();
 }
 

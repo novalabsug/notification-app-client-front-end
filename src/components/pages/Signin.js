@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,14 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const Signin = () => {
-  let users = useSelector((state) => state.users);
-  const navigate = useNavigate();
+  let results = useSelector((state) => state.auth);
+  const navigator = useNavigate();
 
-  users.forEach((user) => {
-    if (user.user) {
-      navigate("/");
-    }
-  });
+  if (results.authData.result) {
+    window.location.assign("/");
+  }
 
   const [userData, setUserData] = useState({
     username: "",
@@ -33,6 +31,10 @@ const Signin = () => {
     });
   };
 
+  const handleChange = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
+
   return (
     <main id="signin">
       <h3 className="f-size-xlrg center-align">Sign-In to your account</h3>
@@ -46,18 +48,9 @@ const Signin = () => {
               placeholder="username"
               name="username"
               autoComplete="false"
-              value={userData.username}
-              onChange={(e) =>
-                setUserData({ ...userData, username: e.target.value })
-              }
+              onChange={handleChange}
             />
-            <div className="input-error">
-              {users.map((user) => (
-                <p className="error username-error">
-                  {user.error.username !== "" ? user.error.username : ""}
-                </p>
-              ))}
-            </div>
+            <p className="error username-error">{results.authData.username}</p>
           </div>
         </div>
         <div className="form-group">
@@ -68,23 +61,14 @@ const Signin = () => {
               type="password"
               placeholder="password"
               name="password"
-              value={userData.password}
-              onChange={(e) =>
-                setUserData({ ...userData, password: e.target.value })
-              }
+              onChange={handleChange}
             />
-            <div className="input-error">
-              {users.map((user) => (
-                <p className="error password-error">
-                  {user.error.password !== "" ? user.error.password : ""}
-                </p>
-              ))}
-            </div>
+            <p className="error password-error">{results.authData.password}</p>
           </div>
         </div>
         <div className="wrapper">
           <p>
-            Or <a href="/">Create an account</a>
+            Or <a href="/signup">Create an account</a>
           </p>
         </div>
         <button type="submit" className="btn">

@@ -20,7 +20,7 @@
           box-sizing: border-box;
   font-size: 1rem;
   font-family: karla;
-  color: #fff;
+  color: #000;
   -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
 }
@@ -34,7 +34,7 @@
 }
 
 .secondary-color {
-  color: #142844;
+  color: #cecece;
 }
 
 i {
@@ -42,7 +42,7 @@ i {
 }
 
 body {
-  background-color: #142844;
+  background-color: #cecece;
 }
 
 img {
@@ -61,7 +61,7 @@ textarea {
   border: none;
   outline: none;
   width: 100%;
-  background: #1a3458;
+  background: #dbdbdb;
 }
 
 .center-align {
@@ -242,7 +242,7 @@ button {
 
 .notification-msg-card .hdr {
   padding: 1.3rem 0;
-  background: #112138;
+  background: #c6c6c6;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
 }
@@ -281,7 +281,7 @@ nav {
   right: 0;
   top: 0;
   z-index: 8;
-  background: #142844;
+  background: #cecece;
 }
 
 nav .holder {
@@ -293,7 +293,7 @@ nav form {
 }
 
 nav form input {
-  background: #cacaca;
+  background: #dbdbdb;
   color: #000;
 }
 
@@ -348,7 +348,7 @@ main#landing-page .container section#navbar .companies-wrapper {
 
 main#landing-page .container section#navbar .companies-wrapper .company-wrapper {
   width: 100%;
-  background: #172f50;
+  background: #dbdbdb;
   padding: 0.3rem;
   border-radius: 0.5rem;
   margin: 0.5rem 0;
@@ -358,6 +358,15 @@ main#landing-page .container section#navbar .companies-wrapper .company-wrapper 
 
 main#landing-page .container section#navbar .companies-wrapper .company-wrapper.active {
   background: #1a7cb4;
+}
+
+main#landing-page .container section#navbar .companies-wrapper .company-wrapper.active h4 {
+  color: #fff;
+}
+
+main#landing-page .container section#navbar .companies-wrapper .company-wrapper.active p.num {
+  color: #1a7cb4;
+  background: #cecece;
 }
 
 main#landing-page .container section#navbar .companies-wrapper .company-wrapper:hover {
@@ -378,10 +387,11 @@ main#landing-page .container section#navbar .companies-wrapper .company-wrapper 
 
 main#landing-page .container section#navbar .companies-wrapper .company-wrapper p.num {
   position: absolute;
-  background: #142844;
-  padding: 0.1rem 0.3rem;
+  background: #1a7cb4;
+  padding: 0.1rem 0.3rem 0.1rem 0.2rem;
   width: 1rem;
   top: 0.7rem;
+  color: #fff;
   height: auto;
   border-radius: 0.2rem;
   right: 0.5rem;
@@ -403,91 +413,102 @@ main#landing-page .container section#navbar footer .social-wrapper a {
   margin: 0 1rem;
 }
 
-main#landing-page .container section#chats {
+main#landing-page .container section#messages {
   position: fixed;
   top: 4rem;
   left: 20%;
   right: 0;
   bottom: 0;
-  height: 100vh;
+  height: 80vh;
   z-index: 2;
   padding: 1rem;
 }
 
-main#landing-page .container section#chats .chats-nav {
+main#landing-page .container section#messages .messages-nav {
   width: 100%;
   position: relative;
 }
 
-main#landing-page .container section#chats .chats-nav ul {
+main#landing-page .container section#messages .messages-nav ul {
   width: 50%;
 }
 
-main#landing-page .container section#chats .chats-nav ul li {
+main#landing-page .container section#messages .messages-nav ul li {
   position: relative;
   padding: 0.3rem 2rem;
   margin: 0 0.3rem 0 0;
   cursor: pointer;
 }
 
-main#landing-page .container section#chats .chats-nav ul li a {
+main#landing-page .container section#messages .messages-nav ul li a {
   margin: 0 1rem 0 0.5rem;
 }
 
-main#landing-page .container section#chats .chats-nav ul li p.num {
+main#landing-page .container section#messages .messages-nav ul li p.num {
   position: absolute;
   background: #1a7cb4;
   padding: 0.1rem 0.2rem;
   height: auto;
   width: 1rem;
   font-size: 0.9rem;
+  color: #fff;
   border-radius: 0.2rem;
   right: 0.3rem;
 }
 
-main#landing-page .container section#chats .chats-nav ul li:hover {
+main#landing-page .container section#messages .messages-nav ul li:hover {
   border-bottom: 0.15rem solid #cacaca;
 }
 
-main#landing-page .container section#chats .chats-nav ul li.active {
+main#landing-page .container section#messages .messages-nav ul li.active {
   border-bottom: 0.15rem solid #1a7cb4;
 }
 
-main#landing-page .container section#chats .chats-nav .wrapper {
+main#landing-page .container section#messages .messages-nav .wrapper {
   width: 50%;
 }
 
-main#landing-page .container section#chats .chats-nav .wrapper span:nth-child(1) {
+main#landing-page .container section#messages .messages-nav .wrapper span p.error {
+  color: red;
+  margin: 0.5rem 0 0 0;
+  font-weight: bold;
+}
+
+main#landing-page .container section#messages .messages-nav .wrapper span:nth-child(1) {
   width: 30%;
 }
 
-main#landing-page .container section#chats .chats-nav .wrapper span:nth-child(2) {
+main#landing-page .container section#messages .messages-nav .wrapper span:nth-child(2) {
   width: 70%;
 }
 
-main#landing-page .container section#chats .chats-nav .wrapper span input {
+main#landing-page .container section#messages .messages-nav .wrapper span input {
   width: 100%;
   padding: 0.5rem 1rem;
-  background: #cacaca;
+  background: #dbdbdb;
   color: #000;
   border-radius: 0;
   border-top-right-radius: 0.3rem;
   border-bottom-right-radius: 0.3rem;
 }
 
-main#landing-page .container section#chats .chats-nav .wrapper span button {
+main#landing-page .container section#messages .messages-nav .wrapper span input.error {
+  border-color: red;
+}
+
+main#landing-page .container section#messages .messages-nav .wrapper span button {
   width: 100%;
   border-radius: 0;
   border-top-left-radius: 0.3rem;
   border-bottom-left-radius: 0.3rem;
-  cursor: default;
+  cursor: pointer;
 }
 
-main#landing-page .container section#chats .chats-nav .wrapper span button:hover {
+main#landing-page .container section#messages .messages-nav .wrapper span button:hover {
   padding: 0.5rem 1rem !important;
 }
 
-main#landing-page .container section#chats .chats-nav .company-list-wrapper {
+main#landing-page .container section#messages .messages-nav .company-list-wrapper {
   width: 20rem;
   padding: 1rem;
   background: #cacaca;
@@ -499,21 +520,21 @@ main#landing-page .container section#chats .chats-nav .company-list-wrapper {
           transform: translate3d(0, -100%, 0);
 }
 
-main#landing-page .container section#chats .chats-nav .company-list-wrapper.show {
+main#landing-page .container section#messages .messages-nav .company-list-wrapper.show {
   visibility: visible;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
 
-main#landing-page .container section#chats .chats-nav .company-list-wrapper h4 {
+main#landing-page .container section#messages .messages-nav .company-list-wrapper h4 {
   color: #5f5f5f;
 }
 
-main#landing-page .container section#chats .chats-nav .company-list-wrapper .results-wrapper {
+main#landing-page .container section#messages .messages-nav .company-list-wrapper .results-wrapper {
   padding: 0.5rem 0;
 }
 
-main#landing-page .container section#chats .chats-nav .company-list-wrapper .results-wrapper h5 {
+main#landing-page .container section#messages .messages-nav .company-list-wrapper .results-wrapper h5 {
   width: 100%;
   padding: 0.3rem;
   color: #000;
@@ -521,32 +542,83 @@ main#landing-page .container section#chats .chats-nav .company-list-wrapper .res
   cursor: pointer;
 }
 
-main#landing-page .container section#chats .chats-nav .company-list-wrapper .results-wrapper h5:hover {
+main#landing-page .container section#messages .messages-nav .company-list-wrapper .results-wrapper h5:hover {
   background: #fff;
 }
 
-main#landing-page .container section#chats .chats-content {
+main#landing-page .container section#messages .messages-content {
   width: 100%;
   height: 100%;
   background: #fff;
   margin: 1rem 0;
   border-radius: 0.3rem;
-  padding: 1rem;
-}
-
-main#landing-page .container section#chat {
-  padding: 1rem 2rem 1rem 1rem;
-  border-radius: 0.5rem;
-  background: #eeeeee;
   position: relative;
 }
 
-main#landing-page .container section#chat h3,
-main#landing-page .container section#chat p {
+main#landing-page .container section#messages .messages-content section#mail-tab {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+}
+
+main#landing-page .container section#messages .messages-content section#mail-tab.active {
+  display: block;
+}
+
+main#landing-page .container section#messages .messages-content section#mail-tab p.empty-mail {
+  padding: 1rem 0;
+  color: #5f5f5f;
+  font-style: italic;
+  margin: 20%;
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+main#landing-page .container section#messages .messages-content section#mail-tab section.empty-mail p {
+  padding: 1rem 0;
+  color: #5f5f5f;
+  font-style: italic;
+  margin: 20%;
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+main#landing-page .container section#messages .messages-content section#mail-tab section.mail {
+  padding: 1rem 2rem 1rem 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+main#landing-page .container section#messages .messages-content section#mail-tab section.mail h3,
+main#landing-page .container section#messages .messages-content section#mail-tab section.mail p {
   color: #000;
 }
 
-main#landing-page .container section#chat p {
+main#landing-page .container section#messages .messages-content section#mail-tab section.mail .mail-wrapper {
+  padding: 1rem;
+  cursor: pointer;
+  background: #cecece;
+  border-radius: 0.5rem;
+  position: relative;
+  width: 100%;
+}
+
+main#landing-page .container section#messages .messages-content section#mail-tab section.mail .mail-wrapper.read {
+  padding: 2rem 1rem 5rem 1rem;
+  height: auto;
+}
+
+main#landing-page .container section#messages .messages-content section#mail-tab section.mail .mail-wrapper.read p {
+  overflow: visible;
+  text-overflow: unset;
+  max-height: auto;
+  line-height: normal;
+}
+
+main#landing-page .container section#messages .messages-content section#mail-tab section.mail .mail-wrapper p {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -559,17 +631,111 @@ main#landing-page .container section#chat p {
   margin: 0.3rem 0;
 }
 
-main#landing-page .container section#chat h5 {
+main#landing-page .container section#messages .messages-content section#mail-tab section.mail .mail-wrapper h5 {
   color: #000;
   position: absolute;
   right: 2rem;
   top: 1rem;
 }
 
+main#landing-page .container section#messages .messages-content section#chat-tab {
+  position: absolute;
+  height: 100%;
+  border-radius: 0.5rem;
+  width: 100%;
+  display: none;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab.active {
+  display: block;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab p.empty-chat {
+  padding: 1rem 0;
+  color: #5f5f5f;
+  font-style: italic;
+  margin: 20%;
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat {
+  height: 100%;
+  position: relative;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat .chat-wrapper {
+  width: 100%;
+  height: 88%;
+  position: absolute;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat .chat-wrapper.tab-increase {
+  height: 70%;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat .chat-wrapper section.empty-chat p {
+  padding: 1rem 0;
+  color: #5f5f5f;
+  font-style: italic;
+  margin: 20%;
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat .chat-wrapper section.chat-messages {
+  padding: 1rem;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper {
+  width: 100%;
+  height: 12%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  padding: 0.5rem 1rem;
+  background: #c1c1c1;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper.tab-increase {
+  height: 30%;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper .icon-btn {
+  cursor: pointer;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper .input {
+  padding: 0.5rem 1rem;
+  width: 70%;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper .input textarea {
+  width: 100%;
+  background: #dbdbdb;
+  margin: 0;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper .btn-wrapper {
+  width: 10%;
+  padding: 1rem 2rem;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat h3,
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat p {
+  color: #000;
+}
+
 main#signin, main#signup {
   padding: 8rem 10rem 5rem 10rem;
   background: #eeeeee;
-  height: 100vh;
+  height: 100%;
 }
 
 main#signin h3, main#signup h3 {
@@ -578,7 +744,7 @@ main#signin h3, main#signup h3 {
 }
 
 main#signin form, main#signup form {
-  background: #142844;
+  background: #cecece;
   margin: 1rem 5rem;
   padding: 3rem 5rem;
   border-radius: 1rem;
@@ -613,6 +779,38 @@ main#signin form .form-group .input p.error, main#signup form .form-group .input
   color: red;
 }
 
+main#signin form .social-auth-wrapper, main#signup form .social-auth-wrapper {
+  padding: 2rem 5rem;
+}
+
+main#signin form .social-auth-wrapper h3, main#signup form .social-auth-wrapper h3 {
+  color: #fff;
+}
+
+main#signin form .social-auth-wrapper .flx, main#signup form .social-auth-wrapper .flx {
+  padding: 1rem 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main#signin form .social-auth-wrapper .flx a, main#signup form .social-auth-wrapper .flx a {
+  margin: 1rem 5rem;
+  padding: 0.4rem 9rem;
+  font-size: 1.2rem;
+}
+
+main#signin form .social-auth-wrapper .flx a.google-sign-in, main#signup form .social-auth-wrapper .flx a.google-sign-in {
+  background: #667db6;
+  background: -webkit-gradient(linear, left top, right top, from(#db4437), color-stop(#f4b400), color-stop(#0f9d58), to(#4285f4));
+  background: linear-gradient(to right, #db4437, #f4b400, #0f9d58, #4285f4);
+}
+
+main#signin form .social-auth-wrapper .flx a.github-sign-in, main#signup form .social-auth-wrapper .flx a.github-sign-in {
+  background: #000;
+}
+
 footer {
   padding: 2rem 3rem;
 }
@@ -639,7 +837,7 @@ footer {
           box-sizing: border-box;
   font-size: 1rem;
   font-family: karla;
-  color: #fff;
+  color: #000;
   -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
 }
@@ -653,7 +851,7 @@ footer {
 }
 
 .secondary-color {
-  color: #142844;
+  color: #cecece;
 }
 
 i {
@@ -661,7 +859,7 @@ i {
 }
 
 body {
-  background-color: #142844;
+  background-color: #cecece;
 }
 
 img {
@@ -680,7 +878,7 @@ textarea {
   border: none;
   outline: none;
   width: 100%;
-  background: #1a3458;
+  background: #dbdbdb;
 }
 
 .center-align {
@@ -861,7 +1059,7 @@ button {
 
 .notification-msg-card .hdr {
   padding: 1.3rem 0;
-  background: #112138;
+  background: #c6c6c6;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
 }

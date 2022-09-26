@@ -1,7 +1,11 @@
 import { combineReducers } from "redux";
 
-import users from "./users";
+import client from "./Client";
+import auth from "./auth";
+import company from "./company";
 
 export default combineReducers({
-  users,
+  client,
+  auth,
+  company,
 });
