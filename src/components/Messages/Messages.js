@@ -19,6 +19,8 @@ const Messages = ({ user }) => {
   const results = useSelector((state) => state?.company);
   const dispatch = useDispatch();
 
+  console.log(results);
+
   let Mails = [];
   let Chats = [];
   let Error = "";

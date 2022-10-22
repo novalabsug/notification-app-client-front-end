@@ -13,7 +13,7 @@ const MainNav = () => {
 
   const [user, setUser] = useState(JSON.parse(newState));
   const dispatch = useDispatch();
-  const navigator = useNavigate();
+
   const logoutUser = () => {
     dispatch({ type: "LOGOUT" });
     window.location.assign("/signin");

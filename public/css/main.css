@@ -616,6 +616,7 @@ main#landing-page .container section#messages .messages-content section#mail-tab
   text-overflow: unset;
   max-height: auto;
   line-height: normal;
+  display: block;
 }
 
 main#landing-page .container section#messages .messages-content section#mail-tab section.mail .mail-wrapper p {

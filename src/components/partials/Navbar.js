@@ -11,9 +11,13 @@ import Nav from "./nav/Nav";
 const Navbar = ({ user }) => {
   const results = useSelector((state) => state?.client);
 
+  console.log(results);
+
   let Companies = [];
 
-  results.Companies ? (Companies = results?.Companies) : (Companies = []);
+  results?.data?.Companies
+    ? (Companies = results?.data?.Companies)
+    : (Companies = []);
 
   return (
     <section id="navbar">

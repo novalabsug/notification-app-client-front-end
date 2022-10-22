@@ -1,7 +1,6 @@
 import moment from "moment";
 
 const Mail = ({ mail }) => {
-  console.log(mail);
   const handleRead = (e) => {
     if (e.target.classList.contains("mail-wrapper")) {
       if (e.target.classList.contains("read")) {
