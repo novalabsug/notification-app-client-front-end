@@ -11,15 +11,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addCompany } from "../../actions/actions";
+// import { addCompany } from "../../actions/actions";
 
 import { Navigate, useNavigate, useLocation } from "react-router-dom";
 
 const Messages = ({ user }) => {
   const results = useSelector((state) => state?.company);
   const dispatch = useDispatch();
-
-  console.log(results);
 
   let Mails = [];
   let Chats = [];
@@ -46,7 +44,7 @@ const Messages = ({ user }) => {
 
     if (input.value == "") return input.classList.add("error");
 
-    dispatch(addCompany(input.value, user.result._id));
+    // dispatch(addCompany(input.value, user.result._id));
   };
 
   function handleTabSwitch(e) {

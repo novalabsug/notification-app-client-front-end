@@ -2,16 +2,21 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
-import { signinUser } from "../../actions/actions";
+// import { signinUser } from "../../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Navigate, useNavigate } from "react-router-dom";
+import { signinAuthUser } from "../../features/Auth/AuthSlice";
 
 const Signin = () => {
   let results = useSelector((state) => state.auth);
   const navigator = useNavigate();
 
-  if (results.authData.result) {
+  // console.log(results);
+
+  console.log(document.cookie);
+
+  if (results?.user?.result) {
     window.location.assign("/");
   }
 
@@ -24,7 +29,7 @@ const Signin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(signinUser(userData));
+    dispatch(signinAuthUser(userData));
 
     e.target.querySelectorAll(".input-error").forEach((el) => {
       el.innerHTML = "";
@@ -50,7 +55,7 @@ const Signin = () => {
               autoComplete="false"
               onChange={handleChange}
             />
-            <p className="error username-error">{results.authData.username}</p>
+            <p className="error username-error">{results?.error?.username}</p>
           </div>
         </div>
         <div className="form-group">
@@ -63,7 +68,7 @@ const Signin = () => {
               name="password"
               onChange={handleChange}
             />
-            <p className="error password-error">{results.authData.password}</p>
+            <p className="error password-error">{results?.error?.password}</p>
           </div>
         </div>
         <div className="wrapper">

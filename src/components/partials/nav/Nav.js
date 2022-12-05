@@ -1,6 +1,6 @@
 import img from "../../../images/img.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCompanyMessages } from "../../../actions/actions";
+import { fetchMessages } from "../../../features/Messages/messageSlice";
 
 const Nav = ({ company, user }) => {
   const dispatch = useDispatch();
@@ -11,12 +11,11 @@ const Nav = ({ company, user }) => {
     navItems.forEach((item, key) => {
       item.addEventListener("click", () => {
         if (!item.classList.contains("active")) {
-          dispatch(
-            fetchCompanyMessages(
-              user.result.username,
-              item.getAttribute("data-target")
-            )
-          );
+          dispatch(fetchMessages(user.result.username));
+          // fetchCompanyMessages(
+          //   user.result.username,
+          //   item.getAttribute("data-target")
+          // )
           item.classList.add("active");
         }
 

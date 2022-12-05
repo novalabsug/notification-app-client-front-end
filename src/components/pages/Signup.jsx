@@ -8,14 +8,15 @@ import {
 
 import { Google, GitHub } from "@mui/icons-material";
 
-import { createUser } from "../../actions/actions";
+// import { createUser } from "../../actions/actions";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import { googleProvider, githubProvider } from "../../config/authMethod";
 import socialMediaAuth from "../../services/auth";
 
 const Signup = () => {
-  const results = useSelector((state) => state.auth);
+  const results = useSelector((state) => state?.auth);
 
   const [userData, setUserData] = useState({
     username: "",
@@ -28,7 +29,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createUser(userData));
+    // dispatch(createUser(userData));
   };
 
   const handleChange = (e) => {
@@ -60,7 +61,7 @@ const Signup = () => {
               autoComplete="false"
               onChange={handleChange}
             />
-            <p className="error username-error">{results.authData}</p>
+            <p className="error username-error">{results?.authData}</p>
           </div>
           <div className="input">
             <label htmlFor="accountID">Account ID</label>
@@ -72,7 +73,7 @@ const Signup = () => {
               autoComplete="false"
               onChange={handleChange}
             />
-            <p className="error username-error">{results.authData}</p>
+            <p className="error username-error">{results?.authData}</p>
           </div>
         </div>
         <div className="form-group">
@@ -96,7 +97,7 @@ const Signup = () => {
               name="password"
               onChange={handleChange}
             />
-            <p className="error password-error">{results.authData}</p>
+            <p className="error password-error">{results?.authData}</p>
           </div>
         </div>
         <div className="wrapper">

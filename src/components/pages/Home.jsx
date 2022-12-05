@@ -4,7 +4,6 @@ import Navbar from "../partials/Navbar";
 import Messages from "../Messages/Messages";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCompanyData } from "../../actions/actions";
 import { Navigate, useNavigate } from "react-router-dom";
 
 import { isUserLoggedIn } from "../middleware/checkLogin";
@@ -25,7 +24,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCompanyData(user.result));
+    // dispatch(fetchCompanyData(user.result));
   }, []);
 
   return (
