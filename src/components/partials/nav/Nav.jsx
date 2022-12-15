@@ -11,11 +11,12 @@ const Nav = ({ company, user }) => {
     navItems.forEach((item, key) => {
       item.addEventListener("click", () => {
         if (!item.classList.contains("active")) {
-          dispatch(fetchMessages(user.result.username));
-          // fetchCompanyMessages(
-          //   user.result.username,
-          //   item.getAttribute("data-target")
-          // )
+          dispatch(
+            fetchMessages({
+              user: user.username,
+              company: item.getAttribute("data-target"),
+            })
+          );
           item.classList.add("active");
         }
 

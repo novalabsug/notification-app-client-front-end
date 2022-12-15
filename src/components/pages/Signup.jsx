@@ -6,30 +6,48 @@ import {
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { Google, GitHub } from "@mui/icons-material";
+import { addDays } from "date-fns";
 
-// import { createUser } from "../../actions/actions";
+import { Google, GitHub } from "@mui/icons-material";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import { googleProvider, githubProvider } from "../../config/authMethod";
 import socialMediaAuth from "../../services/auth";
+import { signupAuthUser } from "../../features/Auth/AuthSlice";
 
 const Signup = () => {
-  const results = useSelector((state) => state?.auth);
+  let results = useSelector((state) => state.auth);
+
+  if (results?.user?.token) {
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        id: results?.user.result.id,
+        username: results?.user.result.username,
+        image: "",
+      })
+    );
+
+    document.cookie = `notification_mail_app_session=loggedIn;expires=${addDays(
+      new Date(),
+      2
+    )};path=/`;
+
+    window.location.assign("/");
+  }
 
   const [userData, setUserData] = useState({
     username: "",
     accountID: "",
-    gender: "",
     password: "",
   });
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // dispatch(createUser(userData));
+    dispatch(signupAuthUser(userData));
   };
 
   const handleChange = (e) => {
@@ -61,7 +79,7 @@ const Signup = () => {
               autoComplete="false"
               onChange={handleChange}
             />
-            <p className="error username-error">{results?.authData}</p>
+            <p className="error username-error">{results?.error?.username}</p>
           </div>
           <div className="input">
             <label htmlFor="accountID">Account ID</label>
@@ -73,10 +91,10 @@ const Signup = () => {
               autoComplete="false"
               onChange={handleChange}
             />
-            <p className="error username-error">{results?.authData}</p>
+            <p className="error accountID-error">{results?.error}</p>
           </div>
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <div className="input">
             <label htmlFor="gender">Gender</label>
             <select name="gender" onChange={handleChange}>
@@ -86,7 +104,7 @@ const Signup = () => {
               <option value="female">Female</option>
             </select>
           </div>
-        </div>
+        </div> */}
         <div className="form-group">
           <div className="input">
             <label htmlFor="password">Password</label>
@@ -97,7 +115,7 @@ const Signup = () => {
               name="password"
               onChange={handleChange}
             />
-            <p className="error password-error">{results?.authData}</p>
+            <p className="error password-error">{results?.error?.password}</p>
           </div>
         </div>
         <div className="wrapper">

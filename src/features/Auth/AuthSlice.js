@@ -9,7 +9,7 @@ const initialState = {
   loading: false,
   isLoggedIn: false,
   user: [],
-  error: {},
+  error: "",
 };
 
 export const signinAuthUser = createAsyncThunk(
@@ -20,16 +20,25 @@ export const signinAuthUser = createAsyncThunk(
   }
 );
 
+export const signupAuthUser = createAsyncThunk(
+  "auth/signupAuthUser",
+  async (data) => {
+    const response = await axios.post(url + "/register", data);
+    return response.data;
+  }
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
   extraReducers: (builder) => {
+    // signin reducers
     builder.addCase(signinAuthUser.pending, (state) => {
       state.loading = true;
     });
+
     builder.addCase(signinAuthUser.fulfilled, (state, action) => {
       state.loading = false;
-      console.log(action);
       action.payload.error
         ? (state.error = action.payload.error)
         : (state.user = action.payload);
@@ -38,7 +47,29 @@ const authSlice = createSlice({
         ? (state.isLoggedIn = true)
         : (state.isLoggedIn = false);
     });
+
     builder.addCase(signinAuthUser.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+    });
+
+    // signup reducers
+    builder.addCase(signupAuthUser.pending, (state) => {
+      state.loading = true;
+    });
+
+    builder.addCase(signupAuthUser.fulfilled, (state, action) => {
+      state.loading = false;
+      action.payload.error
+        ? (state.error = action.payload.error)
+        : (state.user = action.payload);
+
+      action.payload.result
+        ? (state.isLoggedIn = true)
+        : (state.isLoggedIn = false);
+    });
+
+    builder.addCase(signupAuthUser.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error;
     });

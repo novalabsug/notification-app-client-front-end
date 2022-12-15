@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import { addDays } from "date-fns";
 
 // import { signinUser } from "../../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,13 +11,22 @@ import { signinAuthUser } from "../../features/Auth/AuthSlice";
 
 const Signin = () => {
   let results = useSelector((state) => state.auth);
-  const navigator = useNavigate();
 
-  // console.log(results);
+  if (results?.user?.token) {
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        id: results?.user.result.id,
+        username: results?.user.result.username,
+        image: "",
+      })
+    );
 
-  console.log(document.cookie);
+    document.cookie = `notification_mail_app_session=loggedIn;expires=${addDays(
+      new Date(),
+      2
+    )};path=/`;
 
-  if (results?.user?.result) {
     window.location.assign("/");
   }
 
@@ -24,11 +34,11 @@ const Signin = () => {
     username: "",
     password: "",
   });
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     dispatch(signinAuthUser(userData));
 
     e.target.querySelectorAll(".input-error").forEach((el) => {

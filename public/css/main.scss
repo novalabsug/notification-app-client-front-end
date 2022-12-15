@@ -250,6 +250,8 @@ main {
                 right: 0;
                 left: 0;
                 display: none;
+                overflow: auto;
+                padding: 1rem 0;
                 &.active {
                   display: block;
                 }
@@ -257,7 +259,7 @@ main {
                   padding: 1rem 0;
                   color: #5f5f5f;
                   font-style: italic;
-                  margin: 20%;
+                  margin: 15%;
                   font-size: 1.2rem;
                   font-weight: bolder;
                 }
@@ -267,15 +269,18 @@ main {
                       padding: 1rem 0;
                       color: #5f5f5f;
                       font-style: italic;
-                      margin: 20%;
+                      margin: 15%;
                       font-size: 1.2rem;
                       font-weight: bolder;
                     }
                   }
                   &.mail {
-                    padding: 1rem 2rem 1rem 1rem;
+                    padding: 1rem 1rem 0 1rem;
                     border-radius: 0.5rem;
-                    overflow: hidden;
+                    overflow: auto;
+                    &:nth-child(1) {
+                      padding: 0 1rem;
+                    }
                     h3,
                     p {
                       color: $base-color;
@@ -288,12 +293,6 @@ main {
                       position: relative;
                       width: 100%;
                       &.read {
-                        // position: absolute;
-                        // top: 2rem;
-                        // left: 1rem;
-                        // right: 1rem;
-                        // bottom: 1rem;
-                        // padding: 2rem 1rem;
                         padding: 2rem 1rem 5rem 1rem;
                         height: auto;
                         p {
@@ -338,7 +337,7 @@ main {
                   padding: 1rem 0;
                   color: #5f5f5f;
                   font-style: italic;
-                  margin: 20%;
+                  margin: 15%;
                   font-size: 1.2rem;
                   font-weight: bolder;
                 }

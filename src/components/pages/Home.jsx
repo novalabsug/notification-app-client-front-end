@@ -7,25 +7,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 
 import { isUserLoggedIn } from "../middleware/checkLogin";
+import { fetchCompanies } from "../../features/Company/companySlice";
 
 const Home = () => {
   // check user log in
   isUserLoggedIn();
 
-  let newState = {};
-  if (localStorage.getItem("profile") != "") {
-    newState = localStorage.getItem("profile");
-  } else {
-    newState = JSON.stringify(newState);
-  }
-
-  const [user, setUser] = useState(JSON.parse(newState));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(fetchCompanyData(user.result));
-  }, []);
+    dispatch(fetchCompanies(user));
+  }, [user]);
 
   return (
     <main id="landing-page">

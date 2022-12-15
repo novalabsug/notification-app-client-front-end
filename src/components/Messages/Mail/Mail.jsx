@@ -25,15 +25,7 @@ const Mail = ({ mail }) => {
     <section className="mail">
       <div className="mail-wrapper" onClick={handleRead}>
         <h3 className="f-size-reg">{mail.title}</h3>
-        <p>
-          {mail.message + " "} Consider an elementary proposition: companies
-          exist to make money, not to lose it. This should be obvious to any
-          thinking person. But it wasn’t so obvious to many in the late 1990s,
-          when no loss was too big to be described as an investment in an even
-          bigger, brighter future. The conventional wisdom of the “New Economy”
-          accepted page views as a more authoritative, forward-looking financial
-          metric than something as pedestrian as profit.
-        </p>
+        <p>{mail.message + " "}</p>
         <h5 className="date-wrapper">{moment(mail.createdOn).fromNow()}</h5>
       </div>
     </section>

@@ -36,6 +36,10 @@ $secondary-color: #cecece;
   @include easeOut();
 }
 
+i {
+  color: $secondary-color;
+}
+
 .bold-txt {
   font-weight: bold;
 }

@@ -5,14 +5,18 @@ const url = "http://localhost:3500";
 
 const initialState = {
   loading: false,
-  chats: [],
+  messages: [],
   errors: {},
 };
 
 export const fetchMessages = createAsyncThunk(
-  "chat/fetchMessages",
+  "message/fetchMessages",
   async (data) => {
-    const response = await axios.post(url + "/companyMessagesFetch", data);
+    const { user, company } = data;
+    const response = await axios.post(url + "/companyMessagesFetch", {
+      user,
+      company,
+    });
     return response.data;
   }
 );
@@ -23,6 +27,16 @@ const messageSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchMessages.pending, (state) => {
       state.loading = true;
+    });
+    builder.addCase(fetchMessages.fulfilled, (state, action) => {
+      state.loading = false;
+      action.payload.error
+        ? (state.errors = action.payload.error)
+        : (state.messages = action.payload);
+    });
+    builder.addCase(fetchMessages, (state, action) => {
+      state.loading = false;
+      state.errors = action.error;
     });
   },
 });

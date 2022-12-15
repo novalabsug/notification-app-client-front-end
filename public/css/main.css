@@ -25,6 +25,10 @@
   transition: all 0.4s ease-out;
 }
 
+i {
+  color: #cecece;
+}
+
 .bold-txt {
   font-weight: bold;
 }
@@ -562,6 +566,8 @@ main#landing-page .container section#messages .messages-content section#mail-tab
   right: 0;
   left: 0;
   display: none;
+  overflow: auto;
+  padding: 1rem 0;
 }
 
 main#landing-page .container section#messages .messages-content section#mail-tab.active {
@@ -572,7 +578,7 @@ main#landing-page .container section#messages .messages-content section#mail-tab
   padding: 1rem 0;
   color: #5f5f5f;
   font-style: italic;
-  margin: 20%;
+  margin: 15%;
   font-size: 1.2rem;
   font-weight: bolder;
 }
@@ -581,15 +587,19 @@ main#landing-page .container section#messages .messages-content section#mail-tab
   padding: 1rem 0;
   color: #5f5f5f;
   font-style: italic;
-  margin: 20%;
+  margin: 15%;
   font-size: 1.2rem;
   font-weight: bolder;
 }
 
 main#landing-page .container section#messages .messages-content section#mail-tab section.mail {
-  padding: 1rem 2rem 1rem 1rem;
+  padding: 1rem 1rem 0 1rem;
   border-radius: 0.5rem;
-  overflow: hidden;
+  overflow: auto;
+}
+
+main#landing-page .container section#messages .messages-content section#mail-tab section.mail:nth-child(1) {
+  padding: 0 1rem;
 }
 
 main#landing-page .container section#messages .messages-content section#mail-tab section.mail h3,
@@ -655,7 +665,7 @@ main#landing-page .container section#messages .messages-content section#chat-tab
   padding: 1rem 0;
   color: #5f5f5f;
   font-style: italic;
-  margin: 20%;
+  margin: 15%;
   font-size: 1.2rem;
   font-weight: bolder;
 }
@@ -841,6 +851,10 @@ footer {
   color: #000;
   -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
+}
+
+i {
+  color: #cecece;
 }
 
 .bold-txt {

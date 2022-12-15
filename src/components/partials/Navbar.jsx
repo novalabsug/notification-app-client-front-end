@@ -9,23 +9,23 @@ import { Settings, ContactMail, Message, LiveHelp } from "@mui/icons-material";
 import Nav from "./nav/Nav";
 
 const Navbar = ({ user }) => {
-  const results = useSelector((state) => state?.client);
-
-  console.log(results);
+  const companyStore = useSelector((state) => state.company);
 
   let Companies = [];
 
-  results?.data?.Companies
-    ? (Companies = results?.data?.Companies)
+  Companies = companyStore.companies.Companies;
+
+  companyStore?.companies?.Companies
+    ? (Companies = companyStore.companies.Companies)
     : (Companies = []);
 
   return (
     <section id="navbar">
       <div className="profile-wrapper flx">
-        <img src={user?.result.image ? user?.result.image : img1} />
+        <img src={user?.image ? user?.image : img1} />
         <div className="profile">
           <h5 className="f-size-reg bold">Signed in as</h5>
-          <p>{user?.result.username}</p>
+          <p>{user?.username}</p>
         </div>
       </div>
       <ul className="companies-wrapper">

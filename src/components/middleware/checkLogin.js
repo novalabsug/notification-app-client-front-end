@@ -1,20 +1,10 @@
 export const isUserLoggedIn = () => {
-  let newState = {};
-  if (localStorage.getItem("profile") != "") {
-    newState = localStorage.getItem("profile");
-  } else {
-    newState = JSON.stringify(newState);
-  }
-
-  const user = JSON.parse(newState);
-
-  let isLoggedIn = false;
-
-  if (user?.result) {
-    isLoggedIn = true;
-  }
-
-  if (!isLoggedIn) {
+  if (
+    document.cookie
+      .split(";")
+      .filter((item) => item.trim().startsWith("notification_mail_app_session"))
+      .length <= 0
+  ) {
     window.location.assign("/signin");
   }
 };

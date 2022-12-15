@@ -1,4 +1,4 @@
-import react, { useEffect } from "react";
+import react, { useEffect, useState } from "react";
 import Mail from "./Mail/Mail";
 import Chat from "./Chat/Chat";
 
@@ -11,41 +11,77 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { useDispatch, useSelector } from "react-redux";
-// import { addCompany } from "../../actions/actions";
-
-import { Navigate, useNavigate, useLocation } from "react-router-dom";
+import { addCompany } from "../../features/Company/companySlice";
 
 const Messages = ({ user }) => {
-  const results = useSelector((state) => state?.company);
+  const messagesStore = useSelector((state) => state.message)?.messages;
+  const companyStore = useSelector((state) => state.company);
+  const [addNewCompanyData, setAddNewCompanyData] = useState({
+    uniqueId: "",
+    error: "",
+  });
+
   const dispatch = useDispatch();
 
   let Mails = [];
   let Chats = [];
-  let Error = "";
   let addCompanyResult = "";
+  let addCompanyError = "";
 
-  results?.addCompany
-    ? (addCompanyResult = results?.addCompany)
-    : results?.addCompanyError
-    ? (Error = results?.addCompanyError)
-    : (Error = "");
+  // companyStore?.success.addCompany
+  //   ? (addCompanyResult = companyStore?.success.addCompany)
+  //   : companyStore?.error.addCompanyError
+  //   ? setAddNewCompanyData({
+  //       ...addNewCompanyData,
+  //       error: companyStore.error.addCompanyError,
+  //     })
+  //   : setAddNewCompanyData({ ...addNewCompanyData, error: "" });
+
+  companyStore?.success.addCompany
+    ? (addCompanyResult = companyStore?.success.addCompany)
+    : companyStore?.error.addCompanyError
+    ? (addCompanyError = companyStore?.error.addCompanyError)
+    : (addCompanyError = "");
+
+  // if ((addCompanyError = "")) {
+  //   console.log("Empty");
+  //   // setAddNewCompanyData({ ...addNewCompanyData, error: addCompanyError });
+  // } else {
+  //   console.log("Not empty");
+  //   // setAddNewCompanyData({ ...addNewCompanyData, error: addCompanyError });
+  // }
 
   if (addCompanyResult == "success") {
     window.location.reload("false");
     addCompanyResult = "";
   }
 
-  results.Mails ? (Mails = results?.Mails) : (Mails = []);
+  messagesStore.Mails ? (Mails = messagesStore?.Mails) : (Mails = []);
 
-  results.Chats ? (Chats = results?.Chats) : (Chats = []);
+  messagesStore.Chats ? (Chats = messagesStore?.Chats) : (Chats = []);
 
   const addNewCompany = () => {
     const input = document.querySelector("#add-company");
 
-    if (input.value == "") return input.classList.add("error");
+    if (input.value == "") {
+      input.parentElement.querySelector("p.error").innerHTML =
+        "Account ID is required";
 
-    // dispatch(addCompany(input.value, user.result._id));
+      return setTimeout(() => {
+        input.parentElement.querySelector("p.error").innerHTML = "";
+      }, 3000);
+    }
+
+    dispatch(
+      addCompany({ userTempId: addNewCompanyData.uniqueId, user: user.id })
+    );
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAddNewCompanyData({ ...addNewCompanyData, error: "" });
+    }, 3000);
+  }, [addNewCompanyData.error]);
 
   function handleTabSwitch(e) {
     const tabBtns = document.querySelectorAll("#tab-btn");
@@ -88,6 +124,13 @@ const Messages = ({ user }) => {
     });
   }
 
+  const handleChange = (e) => {
+    setAddNewCompanyData({
+      ...addNewCompanyData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <section id="messages">
       <div className="messages-nav flx">
@@ -100,7 +143,9 @@ const Messages = ({ user }) => {
           >
             <FontAwesomeIcon icon={faInbox} />
             <a className="nav-btn center-align tab-btn">Inbox</a>
-            <p className="num tab-btn">0</p>
+            <p className="num tab-btn">
+              {Mails.length > 0 ? (Mails[0].emptyMail ? 0 : Mails.length) : 0}
+            </p>
           </li>
           <li
             id="tab-btn"
@@ -110,14 +155,14 @@ const Messages = ({ user }) => {
           >
             <FontAwesomeIcon icon={faMessage} />
             <a className="nav-btn center-align">Chat</a>
-            <p className="num">0</p>
+            <p className="num">
+              {Chats.length > 0 ? (Chats[0].emptyChat ? "0" : Chats.length) : 0}
+            </p>
           </li>
         </ul>
-        <div className="wrapper flx">
+        <form className="wrapper flx" onSubmit={addNewCompany}>
           <span>
-            <button className="btn" onClick={addNewCompany}>
-              Add Company
-            </button>
+            <button className="btn">Add Company</button>
           </span>
           <span>
             <input
@@ -125,14 +170,16 @@ const Messages = ({ user }) => {
               id="add-company"
               placeholder="Enter account unique ID"
               required
+              name="uniqueId"
+              onChange={handleChange}
             />
-            <p className="error">{Error}</p>
+            <p className="error">{addNewCompanyData.error}</p>
           </span>
           <div id="modal-form" className="company-list-wrapper">
             <h4>Results:</h4>
             <div className="results-wrapper"></div>
           </div>
-        </div>
+        </form>
       </div>
       <div className="messages-content">
         <section id="mail-tab" className="tab-menus active" data-target="0">
