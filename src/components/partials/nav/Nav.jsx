@@ -33,7 +33,18 @@ const Nav = ({ company, user }) => {
     });
   }
 
-  return (
+  return parseInt(company.unreadMessages) > 0 ? (
+    <li
+      onLoad={handleNavItemClick}
+      className="company-wrapper flx unread-messages"
+      id="nav-item"
+      data-target={company.companyUsername}
+    >
+      <img src={img} />
+      <h4 className="bold">{company.companyName}</h4>
+      <p className="num">{company.unreadMessages}</p>
+    </li>
+  ) : (
     <li
       onLoad={handleNavItemClick}
       className="company-wrapper flx"
@@ -42,7 +53,7 @@ const Nav = ({ company, user }) => {
     >
       <img src={img} />
       <h4 className="bold">{company.companyName}</h4>
-      <p className="num">0</p>
+      <p className="num">{company.unreadMessages}</p>
     </li>
   );
 };

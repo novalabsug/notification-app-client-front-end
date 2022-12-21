@@ -69,6 +69,9 @@ main {
               margin: 0.5rem 0;
               position: relative;
               cursor: pointer;
+              &.unread-messages {
+                border: 2px solid $primary-color;
+              }
               &.active {
                 background: $primary-color;
                 h4 {
@@ -280,6 +283,11 @@ main {
                     overflow: auto;
                     &:nth-child(1) {
                       padding: 0 1rem;
+                    }
+                    &.unread {
+                      .mail-wrapper {
+                        border: 2px solid $primary-color;
+                      }
                     }
                     h3,
                     p {

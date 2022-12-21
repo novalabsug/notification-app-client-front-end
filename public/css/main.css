@@ -360,6 +360,10 @@ main#landing-page .container section#navbar .companies-wrapper .company-wrapper 
   cursor: pointer;
 }
 
+main#landing-page .container section#navbar .companies-wrapper .company-wrapper.unread-messages {
+  border: 2px solid #1a7cb4;
+}
+
 main#landing-page .container section#navbar .companies-wrapper .company-wrapper.active {
   background: #1a7cb4;
 }
@@ -600,6 +604,10 @@ main#landing-page .container section#messages .messages-content section#mail-tab
 
 main#landing-page .container section#messages .messages-content section#mail-tab section.mail:nth-child(1) {
   padding: 0 1rem;
+}
+
+main#landing-page .container section#messages .messages-content section#mail-tab section.mail.unread .mail-wrapper {
+  border: 2px solid #1a7cb4;
 }
 
 main#landing-page .container section#messages .messages-content section#mail-tab section.mail h3,

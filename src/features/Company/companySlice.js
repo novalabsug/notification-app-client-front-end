@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { readMail } from "../Messages/messageSlice";
 
 const url = "http://localhost:3500";
 
@@ -65,6 +66,12 @@ const companySlice = createSlice({
       state.loading = false;
       state.error = action.error;
     });
+
+    // // --------- read main action
+    // builder.addCase(readMail.fulfilled, (state, action) => {
+    //   state.loading = false
+    //   state.companies.CompanyUnread = {...state.companies.CompanyUnread, }
+    // })
   },
 });
 

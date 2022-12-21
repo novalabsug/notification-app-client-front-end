@@ -16,6 +16,7 @@ import { addCompany } from "../../features/Company/companySlice";
 const Messages = ({ user }) => {
   const messagesStore = useSelector((state) => state.message)?.messages;
   const companyStore = useSelector((state) => state.company);
+
   const [addNewCompanyData, setAddNewCompanyData] = useState({
     uniqueId: "",
     error: "",
@@ -28,28 +29,11 @@ const Messages = ({ user }) => {
   let addCompanyResult = "";
   let addCompanyError = "";
 
-  // companyStore?.success.addCompany
-  //   ? (addCompanyResult = companyStore?.success.addCompany)
-  //   : companyStore?.error.addCompanyError
-  //   ? setAddNewCompanyData({
-  //       ...addNewCompanyData,
-  //       error: companyStore.error.addCompanyError,
-  //     })
-  //   : setAddNewCompanyData({ ...addNewCompanyData, error: "" });
-
-  companyStore?.success.addCompany
+  companyStore?.success?.addCompany
     ? (addCompanyResult = companyStore?.success.addCompany)
     : companyStore?.error.addCompanyError
     ? (addCompanyError = companyStore?.error.addCompanyError)
     : (addCompanyError = "");
-
-  // if ((addCompanyError = "")) {
-  //   console.log("Empty");
-  //   // setAddNewCompanyData({ ...addNewCompanyData, error: addCompanyError });
-  // } else {
-  //   console.log("Not empty");
-  //   // setAddNewCompanyData({ ...addNewCompanyData, error: addCompanyError });
-  // }
 
   if (addCompanyResult == "success") {
     window.location.reload("false");
@@ -60,7 +44,9 @@ const Messages = ({ user }) => {
 
   messagesStore.Chats ? (Chats = messagesStore?.Chats) : (Chats = []);
 
-  const addNewCompany = () => {
+  const addNewCompany = (e) => {
+    e.preventDefault();
+
     const input = document.querySelector("#add-company");
 
     if (input.value == "") {
@@ -76,12 +62,6 @@ const Messages = ({ user }) => {
       addCompany({ userTempId: addNewCompanyData.uniqueId, user: user.id })
     );
   };
-
-  useEffect(() => {
-    setTimeout(() => {
-      setAddNewCompanyData({ ...addNewCompanyData, error: "" });
-    }, 3000);
-  }, [addNewCompanyData.error]);
 
   function handleTabSwitch(e) {
     const tabBtns = document.querySelectorAll("#tab-btn");
@@ -173,7 +153,7 @@ const Messages = ({ user }) => {
               name="uniqueId"
               onChange={handleChange}
             />
-            <p className="error">{addNewCompanyData.error}</p>
+            <p className="error add-company-error">{addCompanyError}</p>
           </span>
           <div id="modal-form" className="company-list-wrapper">
             <h4>Results:</h4>

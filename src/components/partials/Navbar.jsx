@@ -11,13 +11,28 @@ import Nav from "./nav/Nav";
 const Navbar = ({ user }) => {
   const companyStore = useSelector((state) => state.company);
 
+  let CompaniesFetch = [];
+  let UnreadCompaniesFetch = [];
   let Companies = [];
 
-  Companies = companyStore.companies.Companies;
+  // CompaniesFetch = companyStore?.companies.Companies;
 
   companyStore?.companies?.Companies
-    ? (Companies = companyStore.companies.Companies)
-    : (Companies = []);
+    ? (CompaniesFetch = companyStore.companies.Companies)
+    : (CompaniesFetch = []);
+
+  companyStore?.companies?.CompanyUnread
+    ? (UnreadCompaniesFetch = companyStore.companies.CompanyUnread)
+    : (UnreadCompaniesFetch = []);
+
+  CompaniesFetch.forEach((company) => {
+    UnreadCompaniesFetch.forEach((UnreadCompany) => {
+      if (company.companyUsername == UnreadCompany.company) {
+        company = { ...company, unreadMessages: UnreadCompany.count };
+        Companies = [...Companies, company];
+      }
+    });
+  });
 
   return (
     <section id="navbar">
