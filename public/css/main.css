@@ -43,6 +43,7 @@ i {
 
 i {
   color: #1a7cb4;
+  font-size: 1.3rem;
 }
 
 body {
@@ -421,6 +422,10 @@ main#landing-page .container section#navbar footer .social-wrapper a {
   margin: 0 1rem;
 }
 
+main#landing-page .container section#navbar footer .social-wrapper a i {
+  font-size: 1.3rem;
+}
+
 main#landing-page .container section#messages {
   position: fixed;
   top: 4rem;
@@ -443,9 +448,14 @@ main#landing-page .container section#messages .messages-nav ul {
 
 main#landing-page .container section#messages .messages-nav ul li {
   position: relative;
-  padding: 0.3rem 2rem;
-  margin: 0 0.3rem 0 0;
+  padding: 0.2rem 2rem 0.2rem 0.5rem;
+  margin: 0 0.5rem 0 0;
+  width: 40%;
   cursor: pointer;
+}
+
+main#landing-page .container section#messages .messages-nav ul li i {
+  font-size: 1.4rem;
 }
 
 main#landing-page .container section#messages .messages-nav ul li a {
@@ -713,7 +723,7 @@ main#landing-page .container section#messages .messages-content section#chat-tab
   right: 0;
   bottom: 0;
   position: absolute;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 3rem;
   background: #c1c1c1;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
@@ -732,7 +742,7 @@ main#landing-page .container section#messages .messages-content section#chat-tab
 
 main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper .input {
   padding: 0.5rem 1rem;
-  width: 70%;
+  width: 90%;
 }
 
 main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper .input textarea {
@@ -742,8 +752,12 @@ main#landing-page .container section#messages .messages-content section#chat-tab
 }
 
 main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper .btn-wrapper {
-  width: 10%;
+  width: 2%;
   padding: 1rem 2rem;
+}
+
+main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper .btn-wrapper i {
+  cursor: pointer;
 }
 
 main#landing-page .container section#messages .messages-content section#chat-tab section.chat h3,
@@ -879,6 +893,7 @@ i {
 
 i {
   color: #1a7cb4;
+  font-size: 1.3rem;
 }
 
 body {

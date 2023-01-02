@@ -53,13 +53,13 @@ const Navbar = ({ user }) => {
       <footer>
         <div className="flx social-wrapper jc-center">
           <a href="">
-            <Settings color="white" />
+            <i className="fa-solid fa-gear"></i>
           </a>
           <a href="">
-            <Message color="white" />
+            <i className="fa-solid fa-comment"></i>
           </a>
           <a href="">
-            <LiveHelp color="white" />
+            <i className="fa-solid fa-question-circle"></i>
           </a>
         </div>
         <p className="center-align">Copyright &copy; 2022</p>

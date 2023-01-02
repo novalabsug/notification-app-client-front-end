@@ -121,7 +121,7 @@ const Messages = ({ user }) => {
             data-target="0"
             onClick={handleTabSwitch}
           >
-            <FontAwesomeIcon icon={faInbox} />
+            <i className="fa-solid fa-envelope"></i>
             <a className="nav-btn center-align tab-btn">Inbox</a>
             <p className="num tab-btn">
               {Mails.length > 0 ? (Mails[0].emptyMail ? 0 : Mails.length) : 0}
@@ -133,7 +133,7 @@ const Messages = ({ user }) => {
             data-target="1"
             onClick={handleTabSwitch}
           >
-            <FontAwesomeIcon icon={faMessage} />
+            <i className="fa-solid fa-paper-plane"></i>
             <a className="nav-btn center-align">Chat</a>
             <p className="num">
               {Chats.length > 0 ? (Chats[0].emptyChat ? "0" : Chats.length) : 0}

@@ -1,6 +1,7 @@
 import moment from "moment";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AudioRecorder, useAudioRecorder } from "react-audio-voice-recorder";
 import {
   faPaperPlane,
   faMessage,
@@ -9,6 +10,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Chat = ({ chat }) => {
+  const recorderControls = useAudioRecorder();
+  const addAudioElement = (blob) => {
+    const url = URL.createObjectURL(blob);
+    const audio = document.createElement("audio");
+    audio.src = url;
+    audio.controls = true;
+    document.body.appendChild(audio);
+  };
+
   // handle increasing of send message box tab
   function handleIncreasingTab() {
     const messageBox = document.querySelector("#message-box");
@@ -42,13 +52,11 @@ const Chat = ({ chat }) => {
           <section className="chat-messages"></section>
         )}
       </div>
+      {/* <AudioRecorder
+        onRecordingComplete={(blob) => addAudioElement(blob)}
+        recorderControls={recorderControls}
+      /> */}
       <div className="message-send-wrapper flx">
-        <div className="attachment-btn btn-wrapper">
-          <label for="file">
-            <FontAwesomeIcon icon={faAdd} className="icon-btn" />
-          </label>
-          <input type="file" name="file" id="file" hidden />
-        </div>
         <div className="input">
           <textarea
             name="message"
@@ -60,11 +68,17 @@ const Chat = ({ chat }) => {
             onInput={handleIncreasingTab}
           ></textarea>
         </div>
+        <div className="attachment-btn btn-wrapper">
+          <label for="file">
+            <i className="fa-solid fa-plus"></i>
+          </label>
+          <input type="file" name="file" id="file" hidden />
+        </div>
         <div className="audio-btn btn-wrapper">
-          <FontAwesomeIcon icon={faMicrophone} className="icon-btn" />
+          <i className="fa-solid fa-microphone-alt"></i>
         </div>
         <div className="send-btn btn-wrapper">
-          <FontAwesomeIcon icon={faPaperPlane} className="icon-btn" />
+          <i className="fa-solid fa-paper-plane"></i>
         </div>
       </div>
       {/* <h5 className="date-wrapper">{moment("2022-04-05").fromNow()}</h5> */}
