@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local Netlify folder
+.netlify
+
+# [[redirects]]
+#  from = "/search"
+#  to = "https://api.mysearch.com"
+#  status = 200
+#  force = true
+#  headers = {X-From = "Netlify"}
+
