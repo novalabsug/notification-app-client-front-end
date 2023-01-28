@@ -142,7 +142,7 @@ const Messages = ({ user }) => {
         </ul>
         <form className="wrapper flx" onSubmit={addNewCompany}>
           <span>
-            <button className="btn">Add Company</button>
+            <button className="btn hide-on-small-medium">Add Company</button>
           </span>
           <span>
             <input
@@ -154,6 +154,7 @@ const Messages = ({ user }) => {
               onChange={handleChange}
             />
             <p className="error add-company-error">{addCompanyError}</p>
+            <button className="btn hide-on-large">Add Company</button>
           </span>
           <div id="modal-form" className="company-list-wrapper">
             <h4>Results:</h4>

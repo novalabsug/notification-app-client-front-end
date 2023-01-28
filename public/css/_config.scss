@@ -1,24 +1,34 @@
 $base-color: #000;
 $base-color-2: #fff;
-// $theme-color: #31353b;
-// $theme-color-2: #eeeeee;
+$theme-color: #31353b;
+$theme-color-2: #eeeeee;
 $primary-color: #1a7cb4;
-// $secondary-color: #142844;
+$secondary-color-2: #142844;
 $secondary-color: #cecece;
 
 @font-face {
-  font-family: lato;
-  src: url(/fonts/Lato-Light.ttf);
+  font-family: catamaran;
+  src: url(/fonts/Catamaran/static/Catamaran-Thin.ttf);
 }
 
 @font-face {
-  font-family: karla;
-  src: url(../fonts/Karla/static/Karla-ExtraLight.ttf);
+  font-family: catamaran-regular;
+  src: url(/fonts/Catamaran/static/Catamaran-Regular.ttf);
 }
 
 @font-face {
-  font-family: karla-bold;
-  src: url(../fonts/Karla/static/Karla-Bold.ttf);
+  font-family: catamaran-medium;
+  src: url(/fonts/Catamaran/static/Catamaran-Medium.ttf);
+}
+
+@font-face {
+  font-family: catamaran-bold;
+  src: url(/fonts/Catamaran/static/Catamaran-Bold.ttf);
+}
+
+@font-face {
+  font-family: catamaran-black;
+  src: url(/fonts/Catamaran/static/Catamaran-Black.ttf);
 }
 
 //@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
@@ -31,7 +41,7 @@ $secondary-color: #cecece;
   margin: 0;
   box-sizing: border-box;
   font-size: 1rem;
-  font-family: karla;
+  font-family: catamaran;
   color: $base-color;
   @include easeOut();
 }
@@ -40,8 +50,46 @@ i {
   color: $secondary-color;
 }
 
+.p-1 {
+  padding: 1rem 0;
+}
+
+.p_5 {
+  padding: 0.5rem 0;
+}
+
+.p-2 {
+  padding: 2rem 0;
+}
+
+.m-1 {
+  margin: 1rem 0;
+}
+
+.m-2 {
+  margin: 2rem 0;
+}
+
+.m-3 {
+  margin: 3rem 0;
+}
+
+//box shadow
+.bx-sdw {
+  box-shadow: 0 10px 6px -6px #141414;
+  // filter: drop-shadow(0 0 20px rgb(0, 0, 0));
+}
+
+.bx-sdw-1 {
+  box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
+}
+
 .bold-txt {
-  font-weight: bold;
+  font-family: catamaran-bold;
+}
+
+.bold-txt-2 {
+  font-family: catamaran-black;
 }
 
 .primary-color {
@@ -55,6 +103,10 @@ i {
 i {
   color: $primary-color;
   font-size: 1.3rem;
+}
+
+.t-up {
+  text-transform: uppercase;
 }
 
 body {
@@ -159,8 +211,12 @@ h1,
 h2,
 h3,
 h4,
-h5 {
-  // font-family: karla-bold;
+h5,
+a,
+span,
+p,
+li {
+  // font-family: catamaran-bold;
   &.f-size-reg {
     font-size: 1.2rem;
   }

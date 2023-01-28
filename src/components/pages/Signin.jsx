@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Navigate, useNavigate } from "react-router-dom";
 import { signinAuthUser } from "../../features/Auth/AuthSlice";
+import Footer from "../partials/Footer";
 
 const Signin = () => {
   let results = useSelector((state) => state.auth);
@@ -90,6 +91,7 @@ const Signin = () => {
           Sign In
         </button>
       </form>
+      <Footer />
     </main>
   );
 };

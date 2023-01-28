@@ -1,7 +1,7 @@
 @import "config";
 
 nav {
-  padding: 1rem 5rem;
+  padding: 1rem 2rem;
   position: fixed;
   height: 4rem;
   left: 0;
@@ -12,6 +12,14 @@ nav {
   .holder {
     width: 30%;
   }
+  // .logo {
+  //   a {
+  //     img {
+  //       height: 2rem;
+  //       width: 2rem;
+  //     }
+  //   }
+  // }
   form {
     width: 30%;
     input {
@@ -24,6 +32,58 @@ nav {
     padding: 0 3rem;
     a {
       margin: 0 1rem;
+      padding: 0.3rem 1.5rem 1rem 1.5rem;
+    }
+  }
+}
+
+#mobile-nav {
+  width: 60%;
+  background: $theme-color;
+  left: 0.5rem;
+  bottom: 1rem;
+  border-radius: 1rem;
+  top: 1rem;
+  position: fixed;
+  z-index: 998;
+  padding: 3rem 1rem;
+  transform: translate3d(-150%, 0, 0);
+  &.show {
+    transform: translate3d(0, 0, 0);
+  }
+  i {
+    &.fa-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+    }
+  }
+  .profile-wrapper {
+    padding: 1rem 0;
+    flex-direction: row !important;
+    img {
+      height: 3rem !important;
+      width: 3rem !important;
+      border-radius: 50%;
+      border: 0.2rem solid $primary-color;
+      margin: 0.5rem 0 0 0;
+    }
+    .profile {
+      padding: 0.5rem 1rem;
+      h5 {
+        color: $base-color-2;
+      }
+      p {
+        margin: 0;
+      }
+    }
+  }
+  .companies-wrapper {
+    padding: 1rem 0;
+    .company-wrapper {
+      padding: 0.5rem 0.3rem 0.3rem 0.3rem;
+      flex-direction: row !important;
     }
   }
 }
@@ -53,9 +113,9 @@ main {
               border: 0.2rem solid $primary-color;
             }
             .profile {
-              padding: 1rem;
+              padding: 0.5rem 1rem;
               p {
-                margin: 0.3rem 0 0 0;
+                margin: 0;
               }
             }
           }

@@ -11,6 +11,10 @@ import Nav from "./nav/Nav";
 const Navbar = ({ user }) => {
   const companyStore = useSelector((state) => state.company);
 
+  const currentYear = () => {
+    return new Date().getFullYear();
+  };
+
   let CompaniesFetch = [];
   let UnreadCompaniesFetch = [];
   let Companies = [];
@@ -36,21 +40,40 @@ const Navbar = ({ user }) => {
 
   return (
     <section id="navbar">
-      <div className="profile-wrapper flx">
+      <div className="profile-wrapper hide-on-small-medium flx">
         <img src={user?.image ? user?.image : img1} />
         <div className="profile">
           <h5 className="f-size-reg bold">Signed in as</h5>
-          <p>{user?.username}</p>
+          <p className="f-size-reg primary-color bold-txt">{user?.username}</p>
         </div>
       </div>
-      <ul className="companies-wrapper">
+      <ul className="companies-wrapper hide-on-small-medium">
         {Companies.length > 0
           ? Companies.map((company) => (
               <Nav key={company._id} company={company} user={user} />
             ))
           : "Loading ..."}
       </ul>
-      <footer>
+      <div className="modal-form" id="mobile-nav">
+        <i className="fa-solid fa-close" id="mobile-nav-close-btn"></i>
+        <div className="profile-wrapper flx">
+          <img src={user?.image ? user?.image : img1} />
+          <div className="profile">
+            <h5 className="f-size-reg bold">Signed in as</h5>
+            <p className="f-size-reg primary-color bold-txt">
+              {user?.username}
+            </p>
+          </div>
+        </div>
+        <ul className="companies-wrapper">
+          {Companies.length > 0
+            ? Companies.map((company) => (
+                <Nav key={company._id} company={company} user={user} />
+              ))
+            : "Loading ..."}
+        </ul>
+      </div>
+      <footer className="hide-on-small-medium">
         <div className="flx social-wrapper jc-center">
           <a href="">
             <i className="fa-solid fa-gear"></i>
@@ -62,7 +85,7 @@ const Navbar = ({ user }) => {
             <i className="fa-solid fa-question-circle"></i>
           </a>
         </div>
-        <p className="center-align">Copyright &copy; 2022</p>
+        <p className="center-align">Copyright &copy; {currentYear()}</p>
       </footer>
     </section>
   );

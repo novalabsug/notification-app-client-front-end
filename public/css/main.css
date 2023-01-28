@@ -1,16 +1,26 @@
 @font-face {
-  font-family: lato;
-  src: url(/fonts/Lato-Light.ttf);
+  font-family: catamaran;
+  src: url(/fonts/Catamaran/static/Catamaran-Thin.ttf);
 }
 
 @font-face {
-  font-family: karla;
-  src: url(../fonts/Karla/static/Karla-ExtraLight.ttf);
+  font-family: catamaran-regular;
+  src: url(/fonts/Catamaran/static/Catamaran-Regular.ttf);
 }
 
 @font-face {
-  font-family: karla-bold;
-  src: url(../fonts/Karla/static/Karla-Bold.ttf);
+  font-family: catamaran-medium;
+  src: url(/fonts/Catamaran/static/Catamaran-Medium.ttf);
+}
+
+@font-face {
+  font-family: catamaran-bold;
+  src: url(/fonts/Catamaran/static/Catamaran-Bold.ttf);
+}
+
+@font-face {
+  font-family: catamaran-black;
+  src: url(/fonts/Catamaran/static/Catamaran-Black.ttf);
 }
 
 * {
@@ -19,7 +29,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-size: 1rem;
-  font-family: karla;
+  font-family: catamaran;
   color: #000;
   -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
@@ -29,8 +39,46 @@ i {
   color: #cecece;
 }
 
+.p-1 {
+  padding: 1rem 0;
+}
+
+.p_5 {
+  padding: 0.5rem 0;
+}
+
+.p-2 {
+  padding: 2rem 0;
+}
+
+.m-1 {
+  margin: 1rem 0;
+}
+
+.m-2 {
+  margin: 2rem 0;
+}
+
+.m-3 {
+  margin: 3rem 0;
+}
+
+.bx-sdw {
+  -webkit-box-shadow: 0 10px 6px -6px #141414;
+          box-shadow: 0 10px 6px -6px #141414;
+}
+
+.bx-sdw-1 {
+  -webkit-box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
+          box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
+}
+
 .bold-txt {
-  font-weight: bold;
+  font-family: catamaran-bold;
+}
+
+.bold-txt-2 {
+  font-family: catamaran-black;
 }
 
 .primary-color {
@@ -44,6 +92,10 @@ i {
 i {
   color: #1a7cb4;
   font-size: 1.3rem;
+}
+
+.t-up {
+  text-transform: uppercase;
 }
 
 body {
@@ -166,7 +218,11 @@ h1.f-size-reg,
 h2.f-size-reg,
 h3.f-size-reg,
 h4.f-size-reg,
-h5.f-size-reg {
+h5.f-size-reg,
+a.f-size-reg,
+span.f-size-reg,
+p.f-size-reg,
+li.f-size-reg {
   font-size: 1.2rem;
 }
 
@@ -174,7 +230,11 @@ h1.f-size-med,
 h2.f-size-med,
 h3.f-size-med,
 h4.f-size-med,
-h5.f-size-med {
+h5.f-size-med,
+a.f-size-med,
+span.f-size-med,
+p.f-size-med,
+li.f-size-med {
   font-size: 1.3rem;
 }
 
@@ -182,7 +242,11 @@ h1.f-size-lrg,
 h2.f-size-lrg,
 h3.f-size-lrg,
 h4.f-size-lrg,
-h5.f-size-lrg {
+h5.f-size-lrg,
+a.f-size-lrg,
+span.f-size-lrg,
+p.f-size-lrg,
+li.f-size-lrg {
   font-size: 1.5rem;
 }
 
@@ -190,7 +254,11 @@ h1.f-size-xlrg,
 h2.f-size-xlrg,
 h3.f-size-xlrg,
 h4.f-size-xlrg,
-h5.f-size-xlrg {
+h5.f-size-xlrg,
+a.f-size-xlrg,
+span.f-size-xlrg,
+p.f-size-xlrg,
+li.f-size-xlrg {
   font-size: 2rem;
 }
 
@@ -198,7 +266,11 @@ h1.f-size-xxlrg,
 h2.f-size-xxlrg,
 h3.f-size-xxlrg,
 h4.f-size-xxlrg,
-h5.f-size-xxlrg {
+h5.f-size-xxlrg,
+a.f-size-xxlrg,
+span.f-size-xxlrg,
+p.f-size-xxlrg,
+li.f-size-xxlrg {
   font-size: 2.5rem;
 }
 
@@ -279,7 +351,7 @@ button {
 }
 
 nav {
-  padding: 1rem 5rem;
+  padding: 1rem 2rem;
   position: fixed;
   height: 4rem;
   left: 0;
@@ -309,6 +381,73 @@ nav .side-nav {
 
 nav .side-nav a {
   margin: 0 1rem;
+  padding: 0.3rem 1.5rem 1rem 1.5rem;
+}
+
+#mobile-nav {
+  width: 60%;
+  background: #31353b;
+  left: 0.5rem;
+  bottom: 1rem;
+  border-radius: 1rem;
+  top: 1rem;
+  position: fixed;
+  z-index: 998;
+  padding: 3rem 1rem;
+  -webkit-transform: translate3d(-150%, 0, 0);
+          transform: translate3d(-150%, 0, 0);
+}
+
+#mobile-nav.show {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+#mobile-nav i.fa-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+}
+
+#mobile-nav .profile-wrapper {
+  padding: 1rem 0;
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
+}
+
+#mobile-nav .profile-wrapper img {
+  height: 3rem !important;
+  width: 3rem !important;
+  border-radius: 50%;
+  border: 0.2rem solid #1a7cb4;
+  margin: 0.5rem 0 0 0;
+}
+
+#mobile-nav .profile-wrapper .profile {
+  padding: 0.5rem 1rem;
+}
+
+#mobile-nav .profile-wrapper .profile h5 {
+  color: #fff;
+}
+
+#mobile-nav .profile-wrapper .profile p {
+  margin: 0;
+}
+
+#mobile-nav .companies-wrapper {
+  padding: 1rem 0;
+}
+
+#mobile-nav .companies-wrapper .company-wrapper {
+  padding: 0.5rem 0.3rem 0.3rem 0.3rem;
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
 }
 
 main#landing-page .container {
@@ -340,11 +479,11 @@ main#landing-page .container section#navbar .profile-wrapper img {
 }
 
 main#landing-page .container section#navbar .profile-wrapper .profile {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 main#landing-page .container section#navbar .profile-wrapper .profile p {
-  margin: 0.3rem 0 0 0;
+  margin: 0;
 }
 
 main#landing-page .container section#navbar .companies-wrapper {
@@ -849,18 +988,28 @@ footer {
 }
 
 @font-face {
-  font-family: lato;
-  src: url(/fonts/Lato-Light.ttf);
+  font-family: catamaran;
+  src: url(/fonts/Catamaran/static/Catamaran-Thin.ttf);
 }
 
 @font-face {
-  font-family: karla;
-  src: url(../fonts/Karla/static/Karla-ExtraLight.ttf);
+  font-family: catamaran-regular;
+  src: url(/fonts/Catamaran/static/Catamaran-Regular.ttf);
 }
 
 @font-face {
-  font-family: karla-bold;
-  src: url(../fonts/Karla/static/Karla-Bold.ttf);
+  font-family: catamaran-medium;
+  src: url(/fonts/Catamaran/static/Catamaran-Medium.ttf);
+}
+
+@font-face {
+  font-family: catamaran-bold;
+  src: url(/fonts/Catamaran/static/Catamaran-Bold.ttf);
+}
+
+@font-face {
+  font-family: catamaran-black;
+  src: url(/fonts/Catamaran/static/Catamaran-Black.ttf);
 }
 
 * {
@@ -869,7 +1018,7 @@ footer {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-size: 1rem;
-  font-family: karla;
+  font-family: catamaran;
   color: #000;
   -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
@@ -879,8 +1028,46 @@ i {
   color: #cecece;
 }
 
+.p-1 {
+  padding: 1rem 0;
+}
+
+.p_5 {
+  padding: 0.5rem 0;
+}
+
+.p-2 {
+  padding: 2rem 0;
+}
+
+.m-1 {
+  margin: 1rem 0;
+}
+
+.m-2 {
+  margin: 2rem 0;
+}
+
+.m-3 {
+  margin: 3rem 0;
+}
+
+.bx-sdw {
+  -webkit-box-shadow: 0 10px 6px -6px #141414;
+          box-shadow: 0 10px 6px -6px #141414;
+}
+
+.bx-sdw-1 {
+  -webkit-box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
+          box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
+}
+
 .bold-txt {
-  font-weight: bold;
+  font-family: catamaran-bold;
+}
+
+.bold-txt-2 {
+  font-family: catamaran-black;
 }
 
 .primary-color {
@@ -894,6 +1081,10 @@ i {
 i {
   color: #1a7cb4;
   font-size: 1.3rem;
+}
+
+.t-up {
+  text-transform: uppercase;
 }
 
 body {
@@ -1016,7 +1207,11 @@ h1.f-size-reg,
 h2.f-size-reg,
 h3.f-size-reg,
 h4.f-size-reg,
-h5.f-size-reg {
+h5.f-size-reg,
+a.f-size-reg,
+span.f-size-reg,
+p.f-size-reg,
+li.f-size-reg {
   font-size: 1.2rem;
 }
 
@@ -1024,7 +1219,11 @@ h1.f-size-med,
 h2.f-size-med,
 h3.f-size-med,
 h4.f-size-med,
-h5.f-size-med {
+h5.f-size-med,
+a.f-size-med,
+span.f-size-med,
+p.f-size-med,
+li.f-size-med {
   font-size: 1.3rem;
 }
 
@@ -1032,7 +1231,11 @@ h1.f-size-lrg,
 h2.f-size-lrg,
 h3.f-size-lrg,
 h4.f-size-lrg,
-h5.f-size-lrg {
+h5.f-size-lrg,
+a.f-size-lrg,
+span.f-size-lrg,
+p.f-size-lrg,
+li.f-size-lrg {
   font-size: 1.5rem;
 }
 
@@ -1040,7 +1243,11 @@ h1.f-size-xlrg,
 h2.f-size-xlrg,
 h3.f-size-xlrg,
 h4.f-size-xlrg,
-h5.f-size-xlrg {
+h5.f-size-xlrg,
+a.f-size-xlrg,
+span.f-size-xlrg,
+p.f-size-xlrg,
+li.f-size-xlrg {
   font-size: 2rem;
 }
 
@@ -1048,7 +1255,11 @@ h1.f-size-xxlrg,
 h2.f-size-xxlrg,
 h3.f-size-xxlrg,
 h4.f-size-xxlrg,
-h5.f-size-xxlrg {
+h5.f-size-xxlrg,
+a.f-size-xxlrg,
+span.f-size-xxlrg,
+p.f-size-xxlrg,
+li.f-size-xxlrg {
   font-size: 2.5rem;
 }
 
@@ -1128,7 +1339,7 @@ button {
   right: 2rem;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 1170px) {
   .hide-on-small {
     display: none;
   }
@@ -1148,25 +1359,315 @@ button {
     -ms-grid-columns: (1fr)[1] !important;
         grid-template-columns: repeat(1, 1fr) !important;
   }
-}
-
-@media screen and (min-width: 720px) and (max-width: 1170px) {
-  .hide-on-medium {
+  nav {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    background-color: #fff;
+    -webkit-box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
+            box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
+    padding: 1rem;
+    position: static;
+  }
+  nav .holder {
+    width: auto;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+  }
+  nav .holder .menu-btn {
+    padding: 0.5rem 1rem 0.3rem 0;
+  }
+  nav .holder .menu-btn .menu-line {
+    height: 0.3rem;
+    width: 1.4rem;
+    border-radius: 0.3rem;
+    background: #000;
+  }
+  nav .holder .menu-btn .menu-line:first-child {
+    width: 1rem;
+    margin: 0 0 0.25rem 0.4rem;
+  }
+  nav .holder a {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+  }
+  nav .side-nav {
+    width: auto;
+    padding: 0;
+  }
+  nav .side-nav a {
+    margin: 0 0 0 1rem;
+    padding: 0.3rem 1.5rem;
+  }
+  main#landing-page .search-form {
+    padding: 1rem;
+  }
+  main#landing-page .container {
+    padding: 0;
+    height: 100%;
+    position: relative;
+  }
+  main#landing-page .container section#navbar {
+    padding: 0;
+    position: relative;
+    height: auto;
+    width: 100%;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    z-index: 5;
+  }
+  main#landing-page .container section#messages {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    height: 100%;
+    z-index: 2;
+    padding: 1rem;
+  }
+  main#landing-page .container section#messages .messages-nav ul {
+    width: 100%;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+  }
+  main#landing-page .container section#messages .messages-nav ul li {
+    padding: 0.2rem 1rem 0.2rem 0.5rem;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+    width: 50%;
+  }
+  main#landing-page .container section#messages .messages-nav .wrapper {
+    width: 100%;
+    padding: 2rem 0 1rem 0;
+  }
+  main#landing-page .container section#messages .messages-nav .wrapper span {
+    width: 100% !important;
+  }
+  main#landing-page .container section#messages .messages-nav .wrapper span button {
+    border-radius: 0.3rem;
+  }
+  main#landing-page .container section#messages .messages-nav .company-list-wrapper {
+    width: 20rem;
+    padding: 1rem;
+    background: #cacaca;
+    border-radius: 0.3rem;
+    top: 4rem;
+    z-index: 3;
+    visibility: hidden;
+    -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+  }
+  main#landing-page .container section#messages .messages-nav .company-list-wrapper.show {
+    visibility: visible;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  main#landing-page .container section#messages .messages-nav .company-list-wrapper h4 {
+    color: #5f5f5f;
+  }
+  main#landing-page .container section#messages .messages-nav .company-list-wrapper .results-wrapper {
+    padding: 0.5rem 0;
+  }
+  main#landing-page .container section#messages .messages-nav .company-list-wrapper .results-wrapper h5 {
+    width: 100%;
+    padding: 0.3rem;
+    color: #000;
+    border-radius: 0.2rem;
+    cursor: pointer;
+  }
+  main#landing-page .container section#messages .messages-nav .company-list-wrapper .results-wrapper h5:hover {
+    background: #fff;
+  }
+  main#landing-page .container section#messages .messages-content {
+    margin: 0;
+    padding: 1rem 0;
+    height: auto;
+  }
+  main#landing-page .container section#messages .messages-content section#mail-tab {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    left: auto;
+    display: none;
+    overflow: auto;
+    padding: 1rem 0;
+  }
+  main#landing-page .container section#messages .messages-content section#mail-tab.active {
+    display: block;
+  }
+  main#landing-page .container section#messages .messages-content section#mail-tab p.empty-mail {
+    padding: 1rem 0;
+    color: #5f5f5f;
+    font-style: italic;
+    margin: 15%;
+    font-size: 1.2rem;
+    font-weight: bolder;
+  }
+  main#landing-page .container section#messages .messages-content section#mail-tab section.empty-mail p {
+    padding: 1rem 0;
+    color: #5f5f5f;
+    font-style: italic;
+    margin: 15%;
+    font-size: 1.2rem;
+    font-weight: bolder;
+  }
+  main#landing-page .container section#messages .messages-content section#mail-tab section.mail {
+    padding: 1rem 1rem 0 1rem;
+    border-radius: 0.5rem;
+    overflow: auto;
+  }
+  main#landing-page .container section#messages .messages-content section#mail-tab section.mail:nth-child(1) {
+    padding: 0 1rem;
+  }
+  main#landing-page .container section#messages .messages-content section#mail-tab section.mail.unread .mail-wrapper {
+    border: 2px solid #1a7cb4;
+  }
+  main#landing-page .container section#messages .messages-content section#mail-tab section.mail h3,
+  main#landing-page .container section#messages .messages-content section#mail-tab section.mail p {
+    color: #000;
+  }
+  main#landing-page .container section#messages .messages-content section#mail-tab section.mail .mail-wrapper {
+    padding: 1rem;
+    cursor: pointer;
+    background: #cecece;
+    border-radius: 0.5rem;
+    position: relative;
+    width: 100%;
+  }
+  main#landing-page .container section#messages .messages-content section#mail-tab section.mail .mail-wrapper.read {
+    padding: 2rem 1rem 5rem 1rem;
+    height: auto;
+  }
+  main#landing-page .container section#messages .messages-content section#mail-tab section.mail .mail-wrapper.read p {
+    overflow: visible;
+    text-overflow: unset;
+    max-height: auto;
+    line-height: normal;
+    display: block;
+  }
+  main#landing-page .container section#messages .messages-content section#mail-tab section.mail .mail-wrapper p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    /* number of lines to show */
+    line-height: 1;
+    /* fallback */
+    max-height: 2;
+    margin: 0.3rem 0;
+  }
+  main#landing-page .container section#messages .messages-content section#mail-tab section.mail .mail-wrapper h5 {
+    color: #000;
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+  }
+  main#landing-page .container section#messages .messages-content section#chat-tab {
+    position: relative;
+    border-radius: 0.5rem;
+    width: 100%;
     display: none;
   }
-  .hide-on-small-medium {
-    display: none;
+  main#landing-page .container section#messages .messages-content section#chat-tab.active {
+    display: block !important;
   }
-  .hide-on-medium-large {
-    display: none;
+  main#landing-page .container section#messages .messages-content section#chat-tab p.empty-chat {
+    padding: 1rem 0;
+    color: #5f5f5f;
+    font-style: italic;
+    margin: 15%;
+    font-size: 1.2rem;
+    font-weight: bolder;
   }
-  .flx {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat {
+    height: 100%;
+    position: relative;
+  }
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat .chat-wrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat .chat-wrapper.tab-increase {
+    height: auto;
+  }
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat .chat-wrapper section.empty-chat p {
+    padding: 1rem 0;
+    color: #5f5f5f;
+    font-style: italic;
+    margin: 20%;
+    font-size: 1.2rem;
+    font-weight: bolder;
+  }
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat .chat-wrapper section.chat-messages {
+    padding: 1rem;
+  }
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper {
+    width: 100%;
+    height: 12%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    padding: 0.5rem 3rem;
+    background: #c1c1c1;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    border-bottom-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+  }
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper.tab-increase {
+    height: 30%;
+  }
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper .icon-btn {
+    cursor: pointer;
+  }
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper .input {
+    padding: 0.5rem 1rem;
+    width: 90%;
+  }
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper .input textarea {
+    width: 100%;
+    background: #dbdbdb;
+    margin: 0;
+  }
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper .btn-wrapper {
+    width: 2%;
+    padding: 1rem 2rem;
+  }
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat .message-send-wrapper .btn-wrapper i {
+    cursor: pointer;
+  }
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat h3,
+  main#landing-page .container section#messages .messages-content section#chat-tab section.chat p {
+    color: #000;
+  }
+  main#signin, main#signup {
+    padding: 2rem 1rem 5rem 1rem;
+  }
+  main#signin form, main#signup form {
+    margin: 1rem 0;
+    padding: 3rem 1rem;
+  }
+  main#signin form .form-group .input .icon, main#signup form .form-group .input .icon {
+    top: 2.8rem;
   }
 }
 

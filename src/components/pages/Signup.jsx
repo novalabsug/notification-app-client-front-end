@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { googleProvider, githubProvider } from "../../config/authMethod";
 import socialMediaAuth from "../../services/auth";
 import { signupAuthUser } from "../../features/Auth/AuthSlice";
+import Footer from "../partials/Footer";
 
 const Signup = () => {
   let results = useSelector((state) => state.auth);
@@ -138,6 +139,7 @@ const Signup = () => {
           </div>
         </div>
       </form>
+      <Footer />
     </main>
   );
 };

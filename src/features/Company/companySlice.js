@@ -2,9 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { readMail } from "../Messages/messageSlice";
 
-// const url = "https://mail-app-server.onrender.com";
+const url = "https://mail-app-server.onrender.com";
 
-const url = "http://localhost:3500";
+// const url = "http://localhost:3500";
 
 const initialState = {
   loading: false,
